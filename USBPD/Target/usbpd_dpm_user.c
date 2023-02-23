@@ -333,22 +333,24 @@ void USBPD_DPM_GetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef Data
   /* Check type of information targeted by request */
   switch(DataId)
   {
-//  case USBPD_CORE_DATATYPE_SNK_PDO:           /*!< Handling of port Sink PDO, requested by get sink capa*/
-    // break;
-//  case USBPD_CORE_EXTENDED_CAPA:              /*!< Source Extended capability message content          */
-    // break;
-//  case USBPD_CORE_DATATYPE_REQ_VOLTAGE:       /*!< Get voltage value requested for BIST tests, expect 5V*/
-//    *Size = 4;
-//    (void)memcpy((uint8_t *)Ptr, (uint8_t *)&DPM_Ports[PortNum].DPM_RequestedVoltage, *Size);
-    // break;
-//  case USBPD_CORE_INFO_STATUS:                /*!< Information status message content                  */
-    // break;
-//  case USBPD_CORE_MANUFACTURER_INFO:          /*!< Retrieve of Manufacturer info message content       */
-    // break;
-//  case USBPD_CORE_BATTERY_STATUS:             /*!< Retrieve of Battery status message content          */
-    // break;
-//  case USBPD_CORE_BATTERY_CAPABILITY:         /*!< Retrieve of Battery capability message content      */
-    // break;
+  case USBPD_CORE_DATATYPE_SNK_PDO:           /*!< Handling of port Sink PDO, requested by get sink capa*/
+    USBPD_PWR_IF_GetPortPDOs(PortNum, DataId, Ptr, Size);
+    *Size *= 4;
+    break;
+  //  case USBPD_CORE_EXTENDED_CAPA:              /*!< Source Extended capability message content          */
+  // break;
+  // case USBPD_CORE_DATATYPE_REQ_VOLTAGE:       /*!< Get voltage value requested for BIST tests, expect 5V*/
+  //  *Size = 4;
+  //  (void)memcpy((uint8_t*)Ptr, (uint8_t *)&DPM_Ports[PortNum].DPM_RequestedVoltage, *Size);
+  //  break;
+  //  case USBPD_CORE_INFO_STATUS:                /*!< Information status message content                  */
+  // break;
+  //  case USBPD_CORE_MANUFACTURER_INFO:          /*!< Retrieve of Manufacturer info message content       */
+  // break;
+  //  case USBPD_CORE_BATTERY_STATUS:             /*!< Retrieve of Battery status message content          */
+  // break;
+  //  case USBPD_CORE_BATTERY_CAPABILITY:         /*!< Retrieve of Battery capability message content      */
+  // break;
   default:
     DPM_USER_DEBUG_TRACE(PortNum, "ADVICE: update USBPD_DPM_GetDataInfo:%d", DataId);
     break;
@@ -415,7 +417,18 @@ void USBPD_DPM_SetDataInfo(uint8_t PortNum, USBPD_CORE_DataInfoType_TypeDef Data
 void USBPD_DPM_SNK_EvaluateCapabilities(uint8_t PortNum, uint32_t *PtrRequestData, USBPD_CORE_PDO_Type_TypeDef *PtrPowerObjectType)
 {
 /* USER CODE BEGIN USBPD_DPM_SNK_EvaluateCapabilities */
-  DPM_USER_DEBUG_TRACE(PortNum, "ADVICE: update USBPD_DPM_SNK_EvaluateCapabilities");
+	DPM_USER_DEBUG_TRACE(PortNum, "ADVICE: update USBPD_DPM_SNK_EvaluateCapabilities");
+
+	USBPD_SNKRDO_TypeDef rdo;
+	/* Initialize RDO */
+	rdo.d32 = 0;
+	/* Prepare the requested pdo */
+	rdo.FixedVariableRDO.ObjectPosition = 1;
+	rdo.FixedVariableRDO.OperatingCurrentIn10mAunits = 50;
+	rdo.FixedVariableRDO.MaxOperatingCurrent10mAunits = 50;
+	rdo.FixedVariableRDO.CapabilityMismatch = 0;
+	*PtrPowerObjectType = USBPD_CORE_PDO_TYPE_FIXED;
+	*PtrRequestData = rdo.d32;
 /* USER CODE END USBPD_DPM_SNK_EvaluateCapabilities */
 }
 

@@ -104,7 +104,9 @@ void HardFault_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
-
+#if defined( _GUI_INTERFACE)
+  GUI_TimerCounter(); /* needed with GUI_Interface */
+#endif
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
 #if (INCLUDE_xTaskGetSchedulerState == 1 )

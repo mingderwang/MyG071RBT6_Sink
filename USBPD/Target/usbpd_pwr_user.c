@@ -27,6 +27,7 @@
 #endif /* _TRACE */
 
 /* USER CODE BEGIN include */
+#include "main.h"
 /* USER CODE END include */
 
 /** @addtogroup BSP
@@ -915,18 +916,25 @@ __weak int32_t BSP_USBPD_PWR_VBUSGetVoltage(uint32_t Instance, uint32_t *pVoltag
 {
   /* USER CODE BEGIN BSP_USBPD_PWR_VBUSGetVoltage */
 
-  /* Check if instance is valid       */
-  int32_t ret = BSP_ERROR_NONE;
-
-  if ((Instance >= USBPD_PWR_INSTANCES_NBR) || (NULL == pVoltage))
-  {
-    ret = BSP_ERROR_WRONG_PARAM;
-  }
-  *pVoltage = 0u;
-  /* !!!
-      BSP_PWR_VBUSGetVoltage is obsolete. You may need to move your user code
-      inside this function
-   !!! */
+	/* Check if instance is valid */
+	int32_t ret = BSP_ERROR_NONE;
+	if ((Instance >= USBPD_PWR_INSTANCES_NBR) || (NULL == pVoltage))
+	{
+	ret = BSP_ERROR_WRONG_PARAM;
+	*pVoltage = 0;
+	}
+	else
+	{
+	uint32_t val;
+	val = __LL_ADC_CALC_DATA_TO_VOLTAGE( VDDA_APPLI, \
+	LL_ADC_REG_ReadConversionData12(ADC1), \
+	LL_ADC_RESOLUTION_12B); /* mV */
+	/* X-NUCLEO-USBPDM board is used */
+	/* Value is multiplied by 5.97 (Divider R6/R7 (40.2K/200K) for VSENSE) */
+	val *= 597;
+	val /= 100;
+	*pVoltage = val;
+	}
   PWR_DEBUG_TRACE(Instance, "ADVICE: Update BSP_USBPD_PWR_VBUSGetVoltage");
   return ret;
   /* USER CODE END BSP_USBPD_PWR_VBUSGetVoltage */
