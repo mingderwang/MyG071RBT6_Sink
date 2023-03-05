@@ -29,11 +29,10 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "stm32g0xx_hal.h"
 
-#include "stm32g0xx_ll_lpuart.h"
-#include "stm32g0xx_ll_rcc.h"
 #include "stm32g0xx_ll_ucpd.h"
 #include "stm32g0xx_ll_bus.h"
 #include "stm32g0xx_ll_cortex.h"
+#include "stm32g0xx_ll_rcc.h"
 #include "stm32g0xx_ll_system.h"
 #include "stm32g0xx_ll_utils.h"
 #include "stm32g0xx_ll_pwr.h"
@@ -73,6 +72,10 @@ void Error_Handler(void);
 #define VDDA_APPLI 3300
 #define VSENSE_Pin GPIO_PIN_1
 #define VSENSE_GPIO_Port GPIOB
+#define DB_OUT_Pin GPIO_PIN_6
+#define DB_OUT_GPIO_Port GPIOB
+#define VCC_OUT_Pin GPIO_PIN_10
+#define VCC_OUT_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
 

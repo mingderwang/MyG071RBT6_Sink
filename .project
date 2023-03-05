@@ -126,6 +126,26 @@
 			<locationURI>PARENT-3-PROJECT_LOC/STM32Cube/Repository/STM32Cube_FW_G0_V1.6.1/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_rcc_ex.c</locationURI>
 		</link>
 		<link>
+			<name>Drivers/STM32G0xx_HAL_Driver/stm32g0xx_hal_tim.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/STM32Cube/Repository/STM32Cube_FW_G0_V1.6.1/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_tim.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32G0xx_HAL_Driver/stm32g0xx_hal_tim_ex.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/STM32Cube/Repository/STM32Cube_FW_G0_V1.6.1/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_tim_ex.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32G0xx_HAL_Driver/stm32g0xx_hal_uart.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/STM32Cube/Repository/STM32Cube_FW_G0_V1.6.1/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_uart.c</locationURI>
+		</link>
+		<link>
+			<name>Drivers/STM32G0xx_HAL_Driver/stm32g0xx_hal_uart_ex.c</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/STM32Cube/Repository/STM32Cube_FW_G0_V1.6.1/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_uart_ex.c</locationURI>
+		</link>
+		<link>
 			<name>Drivers/STM32G0xx_HAL_Driver/stm32g0xx_ll_adc.c</name>
 			<type>1</type>
 			<locationURI>PARENT-3-PROJECT_LOC/STM32Cube/Repository/STM32Cube_FW_G0_V1.6.1/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_ll_adc.c</locationURI>

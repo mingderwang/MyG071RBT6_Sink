@@ -29,8 +29,8 @@
 /* USER CODE END 1 */
 
 /* Private variables ---------------------------------------------------------*/
-#define BSP_BOARD_NAME  "NUCLEO-GO";
-#define BSP_BOARD_ID    "Sink";
+#define BSP_BOARD_NAME  "NUCLEO-G071RB";
+#define BSP_BOARD_ID    "X-NUCLEO-SNK1M1";
 
 /* Private functions ---------------------------------------------------------*/
 
