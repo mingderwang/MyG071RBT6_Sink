@@ -57,8 +57,6 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern DMA_HandleTypeDef hdma_lpuart1_tx;
-extern UART_HandleTypeDef hlpuart1;
 extern TIM_HandleTypeDef htim6;
 
 /* USER CODE BEGIN EV */
